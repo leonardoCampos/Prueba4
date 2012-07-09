@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:a4j="http://richfaces.org/a4j"
+     xmlns:rich="http://richfaces.org/rich">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -27,10 +29,15 @@
                     <h:inputText id="fecha" value="#{ordersController.selected.fecha}" title="#{bundle.CreateOrdersTitle_fecha}" >
                         <f:converter converterId="myDateConverter"></f:converter>
                     </h:inputText>
+                    
+                    
                     <h:outputLabel value="#{bundle.CreateOrdersLabel_orderInitiated}" for="orderInitiated" />
+                    
                     <h:inputText  id="orderInitiated" value="#{ordersController.selected.orderInitiated}" title="#{bundle.CreateOrdersTitle_orderInitiated}" >   
                         <f:converter converterId="myDateConverter"></f:converter>
                     </h:inputText>
+                    
+                    
                     <h:outputLabel value="#{bundle.CreateOrdersLabel_quantity}" for="quantity" />
                     <h:inputText id="quantity" value="#{ordersController.selected.quantity}" title="#{bundle.CreateOrdersTitle_quantity}" >
                     </h:inputText>
