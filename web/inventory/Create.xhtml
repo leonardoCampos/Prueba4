@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateInventoryTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateInventoryLabel_item}" for="item" />
+                    <h:selectOneMenu id="item" value="#{inventoryController.selected.item}" title="#{bundle.CreateInventoryTitle_item}" >
+                        <f:selectItems value="#{itemController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateInventoryLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{inventoryController.selected.id}" title="#{bundle.CreateInventoryTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateInventoryLabel_cost}" for="cost" />
+                    <h:inputText id="cost" value="#{inventoryController.selected.cost}" title="#{bundle.CreateInventoryTitle_cost}" />
+                    <h:outputLabel value="#{bundle.CreateInventoryLabel_price}" for="price" />
+                    <h:inputText id="price" value="#{inventoryController.selected.price}" title="#{bundle.CreateInventoryTitle_price}" />
+                    <h:outputLabel value="#{bundle.CreateInventoryLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{inventoryController.selected.quantity}" title="#{bundle.CreateInventoryTitle_quantity}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{inventoryController.create}" value="#{bundle.CreateInventorySaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{inventoryController.prepareList}" value="#{bundle.CreateInventoryShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateInventoryIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

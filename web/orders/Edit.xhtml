@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditOrdersTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditOrdersLabel_item}" for="item" />
+                    <h:selectOneMenu id="item" value="#{ordersController.selected.item}" title="#{bundle.EditOrdersTitle_item}" >
+                        <f:selectItems value="#{itemController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditOrdersLabel_currentLocation}" for="currentLocation" />
+                    <h:inputText id="currentLocation" value="#{ordersController.selected.currentLocation}" title="#{bundle.EditOrdersTitle_currentLocation}" />
+                    <h:outputLabel value="#{bundle.EditOrdersLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{ordersController.selected.fecha}" title="#{bundle.EditOrdersTitle_fecha}" >
+                    <f:converter converterId="myDateConverter"></f:converter>
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditOrdersLabel_orderInitiated}" for="orderInitiated" />
+                    <h:inputText id="orderInitiated" value="#{ordersController.selected.orderInitiated}" title="#{bundle.EditOrdersTitle_orderInitiated}" >
+                    <f:converter converterId="myDateConverter"></f:converter>
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditOrdersLabel_quantity}" for="quantity" />
+                    <h:inputText id="quantity" value="#{ordersController.selected.quantity}" title="#{bundle.EditOrdersTitle_quantity}" />
+                    <h:outputLabel value="#{bundle.EditOrdersLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{ordersController.selected.id}" title="#{bundle.EditOrdersTitle_id}" />
+                </h:panelGrid>
+                <h:commandLink action="#{ordersController.update}" value="#{bundle.EditOrdersSaveLink}"/>
+                <br />
+                <br />
+                <h:commandLink action="View" value="#{bundle.EditOrdersViewLink}" immediate="true"/>
+                <br />
+                <h:commandLink action="#{ordersController.prepareList}" value="#{bundle.EditOrdersShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.EditOrdersIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateItemTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form id="itemForm">
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateItemLabel_category}" for="category" />
+                    <h:inputText id="category" value="#{itemController.selected.category}" title="#{bundle.CreateItemTitle_category}">
+                        <f:validator id="myValidator"/>
+                        <f:attribute name="tipo" value="categoria"/>
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateItemLabel_description}" for="description" />
+                    <h:inputText id="description" value="#{itemController.selected.description}" title="#{bundle.CreateItemTitle_description}" >
+                        <f:validator id="myValidator"/>
+                        <f:attribute name="tipo" value="descripcion"/>
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateItemLabel_name}" for="name" />
+                    <h:inputText id="name" value="#{itemController.selected.name}" title="#{bundle.CreateItemTitle_name}" >
+                        <f:validator id="myValidator"/>
+                        <f:attribute name="tipo" value="nombre"/>
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateItemLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{itemController.selected.id}" title="#{bundle.CreateItemTitle_id}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{itemController.create}" value="#{bundle.CreateItemSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{itemController.prepareList}" value="#{bundle.CreateItemShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:commandLink value="#{bundle.CreateItemIndexLink}" action="/index" immediate="true" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
